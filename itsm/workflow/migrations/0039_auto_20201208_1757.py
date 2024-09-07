@@ -36,12 +36,12 @@ class Migration(migrations.Migration):
         ('workflow', '0038_merge_20201117_0950'),
     ]
 
-    operations = [
-        migrations.AlterField(
-            model_name='state',
-            name='extras',
-            field=jsonfield.fields.JSONCharField(
-                blank=True, default={}, max_length=20000, null=True, verbose_name='额外信息'
-            ),
-        ),
-    ]
+    # operations = [
+    #     migrations.AlterField(
+    #         model_name='state',
+    #         name='extras',
+    #         field=jsonfield.fields.JSONCharField(
+    #             blank=True, default={}, max_length=20000, null=True, verbose_name='额外信息'
+    #         ),
+    #     ),
+    # ]

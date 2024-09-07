@@ -229,7 +229,7 @@
     mixins: [permission],
     data() {
       return {
-        appLogo: require('../../../images/itsm-logo.png'),
+        appLogo: require('../../../images/logo.png'),
         userName: window.username || '--',
         bkDocUrl: window.DOC_URL,
         routerList: ROUTER_LIST.slice(0),

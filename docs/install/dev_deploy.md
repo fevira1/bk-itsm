@@ -74,7 +74,7 @@ IS_USE_REDIS = True
 if IS_USE_REDIS:
     CACHE_BACKEND_TYPE = os.environ.get("CACHE_BACKEND_TYPE", "RedisCache")
     REDIS_PORT = os.environ.get("BKAPP_REDIS_PORT", 6379)
-    REDIS_PASSWORD = os.environ.get("BKAPP_REDIS_PASSWORD", "")  # 密码中不能包括敏感字符,例如":"
+    REDIS_PASSWORD = os.environ.get("BKAPP_REDIS_PASSWORD", "1111aaaa")  # 密码中不能包括敏感字符,例如":"
     REDIS_SERVICE_NAME = os.environ.get("BKAPP_REDIS_SERVICE_NAME", "mymaster")
     REDIS_MODE = os.environ.get("BKAPP_REDIS_MODE", "single")
     REDIS_DB = os.environ.get("BKAPP_REDIS_DB", 0)

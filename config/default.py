@@ -132,7 +132,7 @@ if IS_OPEN_V3 and ENGINE_REGION == "default" and ENABLE_SYNC_API_GATEWAY:
     BK_APIGW_API_SERVER_SUB_PATH = api_host.path.lstrip("/")
 
 # IAM 开启开关
-USE_IAM = True if os.getenv("USE_IAM", "true").lower() == "true" else False
+USE_IAM = True 
 if USE_IAM:
     INSTALLED_APPS += (
         "iam",
@@ -372,7 +372,7 @@ IS_USE_REDIS = REDIS_HOST is not None
 if IS_USE_REDIS:
     CACHE_BACKEND_TYPE = os.environ.get("CACHE_BACKEND_TYPE", "RedisCache")
     REDIS_PORT = os.environ.get("BKAPP_REDIS_PORT", 6379)
-    REDIS_PASSWORD = os.environ.get("BKAPP_REDIS_PASSWORD", "")  # 密码中不能包括敏感字符,例如":"
+    REDIS_PASSWORD = os.environ.get("BKAPP_REDIS_PASSWORD", "1111aaaa")  # 密码中不能包括敏感字符,例如":"
     REDIS_SERVICE_NAME = os.environ.get("BKAPP_REDIS_SERVICE_NAME", "mymaster")
     REDIS_MODE = os.environ.get("BKAPP_REDIS_MODE", "single")
     REDIS_DB = os.environ.get("BKAPP_REDIS_DB", 0)

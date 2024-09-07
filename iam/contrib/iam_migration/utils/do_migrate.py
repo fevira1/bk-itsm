@@ -506,7 +506,7 @@ def do_migrate(data, bk_iam_host=BK_IAM_HOST, app_code=APP_CODE, app_secret=APP_
         print("invald json. [operations] required, and should not be empty")
         return False
 
-    print("do migrate")
+    print("**********do migrate***************")
 
     client = Client(app_code, app_secret, bk_iam_host)
 
@@ -514,22 +514,29 @@ def do_migrate(data, bk_iam_host=BK_IAM_HOST, app_code=APP_CODE, app_secret=APP_
     system_ids, resource_type_ids, action_ids, instance_selection_ids = client.query_all_models(system_id)
 
     client.setup_models(system_ids, resource_type_ids, action_ids, instance_selection_ids)
-
+    # print("operations----------: %s" % operations)
+    
     for op in operations:
+        print("op++++begin: %s" % op)
         operation = op.get("operation")
         if not operation:
             print("")
+            print("not operation*****: %s" % op)
             return False
 
         data = op.get("data")
         if not data:
             print("")
+            print("not data****: %s" % op)
             return False
 
         op_data_id = ""
         if isinstance(data, dict):
-            op_data_id = "id=%s" % data.get("id")
-
+           op_data_id = "id=%s" % data.get("id")
+        # print("data: %s" % data)
+        # print("op_data_id: %s" % op_data_id)
+        # if op_data_id=="id=catalog_create":
+        #   print("do_operation: %s" % data)
         ok, message = client.do_operation(operation, system_id, data)
         if not ok:
             print("execute operation [%s] %s fail, error message: %s" % (operation, message, op_data_id))

@@ -5,7 +5,7 @@ const webpackBase = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 // 本地代理地址
-const HOST = ''
+const HOST = 'itsm7.zghxsjy.com'
 const ORIGIN = `http://${HOST}`
 const SET_URL = ''
 

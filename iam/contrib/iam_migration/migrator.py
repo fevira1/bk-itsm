@@ -21,8 +21,8 @@ from django.conf import settings
 
 from iam.contrib.iam_migration.utils import do_migrate
 from iam.contrib.iam_migration import exceptions
-
-
+import logging
+logger = logging.getLogger("iam")
 def upsert_system_render(data):
     resource_api_host = getattr(settings, "BK_IAM_RESOURCE_API_HOST", None)
     if resource_api_host:
@@ -55,11 +55,14 @@ class IAMMigrator(object):
         for op in data["operations"]:
             if op["operation"] in renders:
                 renders[op["operation"]](op["data"])
-
+                
+        logger.info("===========the request: %s", iam_host)
         ok, _ = do_migrate.api_ping(iam_host)
         if not ok:
             raise exceptions.NetworkUnreachableError("bk iam ping error")
 
+
+            
         ok = do_migrate.do_migrate(data, iam_host, app_code, app_secret)
         if not ok:
             raise exceptions.MigrationFailError("iam migrate fail")
